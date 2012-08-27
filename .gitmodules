@@ -1,0 +1,15 @@
+[submodule "puppet/modules/mysql"]
+	path = puppet/modules/mysql
+	url = https://github.com/puppetlabs/puppetlabs-mysql.git
+[submodule "puppet/modules/rvm"]
+	path = puppet/modules/rvm
+	url = http://github.com/blt04/puppet-rvm.git
+[submodule "source/notifier"]
+	path = source/notifier
+	url = https://github.com/teknotus/hms-notifier.git
+[submodule "source/hub"]
+	path = source/hub
+	url = https://github.com/teknotus/hms-hub.git
+[submodule "source/hotline"]
+	path = source/hotline
+	url = https://github.com/teknotus/mnch-hotline.git
