@@ -7,6 +7,8 @@ Vagrant::Config.run do |config|
     notifier_config.vm.network :hostonly, "192.168.2.10"
     notifier_config.vm.box = "precise64"
     notifier_config.vm.share_folder("v-root", "/vagrant", "./notifier", :extra => 'dmode=770,fmode=770')
+    notifier_config.vm.share_folder("notifier-source", "/home/notifier/apps", "./source/notifier")
+    notifier_config.vm.share_folder("hotline-source", "/home/hotline/apps", "./source/hotline")
 
     notifier_config.vm.forward_port 3000, 3000
     notifier_config.vm.forward_port 3001, 3001
@@ -23,6 +25,7 @@ Vagrant::Config.run do |config|
     hub_config.vm.network :hostonly, "192.168.2.11"
     hub_config.vm.box = "precise64"
     hub_config.vm.share_folder("v-root", "/vagrant", "./hub", :extra => 'dmode=770,fmode=770')
+    hub_config.vm.share_folder("hub-source", "/home/hub/apps", "./source/hub")
 
     hub_config.vm.forward_port 3000, 3002
 
