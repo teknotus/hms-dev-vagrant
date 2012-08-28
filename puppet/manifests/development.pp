@@ -44,7 +44,7 @@ class notifier_node{
   }
   database_grant {
     ['myuser@localhost/hms_notifier','myuser@localhost/hotline']:
-      privileges => ['all'] ;
+      privileges => ['all'];
   }
   rvm_system_ruby {
     'ruby-1.8.7-p352':
@@ -56,87 +56,94 @@ class notifier_node{
       ensure  => 'present',
       require => Rvm_system_ruby['ruby-1.8.7-p352'];
   }
-notifier_gem {
-  'abstract':
-    version => '1.0.0' ;
-  'actionmailer':
-    version => '3.0.9' ;
-  'actionpack':
-    version => '3.0.9' ;
-  'activemodel':
-    version => '3.0.9' ;
-  'activerecord':
-    version => '3.0.9' ;
-  'activeresource':
-    version => '3.0.9' ;
-  'activesupport':
-    version => '3.0.9' ;
-  'arel':
-    version => '2.0.10' ;
-  'builder':
-    version => '3.0.0' ;
-  'erubis':
-    version => '2.7.0' ;
-  'factory_girl':
-    version => '1.3.3'; 
-  'factory_girl_rails':
-    version => '1.0.1'; 
-  'fastercsv':
-    version => '1.5.4'; 
-  'gcal4ruby': ;
-  'haml':
-    version => '3.1.2'; 
-  'haml-rails':
-    version => '0.3.4'; 
-  'i18n':
-    version => '0.6.0' ;
-  'jquery-rails':
-    version => '1.0.13'; 
-  'jsonschema':
-    version => '2.0.1'; 
-  'kaminari':
-    version => '0.12.4'; 
-  'macaddr':
-    version => '1.0.0'; 
-  'mail':
-    version => '2.4.4' ;
-  'mime-types':
-    version => '1.19' ;
-  'mocha':
-    version => '0.9.12'; 
-  'polyglot':
-    version => '0.3.3' ;
-  'rack-mount':
-    version => '0.6.14' ;
-  'rack-test':
-    version => '0.6.1' ;
-  'rack':
-    version => '1.4.1' ;
-  'rails':
-    version => '3.0.9'; 
-  'railties':
-    version => '3.0.9';
-  'rails3-generators':
-    version => '0.17.4'; 
-  'rake':
-    version => '0.9.2.2';
-  'rdoc':
-    version => '3.8'; 
-  'rest-client':
-    version => '1.6.3'; 
-  'simple_form':
-    version => '1.4.2'; 
-  'sqlite3':
-    version => '1.3.3';
-  'thor':
-    version => '0.14.6'; 
-  'treetop':
-    version => '1.4.10' ;
-  'tzinfo':
-    version => '0.3.33' ;
-  'uuid':
-    version => '2.3.2';
-}
+  rvm_gemset {
+    "ruby-1.8.7-p352@hotline-dev":
+      ensure  => 'present',
+      require => Rvm_system_ruby['ruby-1.8.7-p352'];
+  }
+  notifier_gem {
+    'abstract':
+      version => '1.0.0';
+    'actionmailer':
+      version => '3.0.9';
+    'actionpack':
+      version => '3.0.9';
+    'activemodel':
+      version => '3.0.9';
+    'activerecord':
+      version => '3.0.9';
+    'activeresource':
+      version => '3.0.9';
+    'activesupport':
+      version => '3.0.9';
+    'arel':
+      version => '2.0.10';
+    'builder':
+      version => '3.0.0';
+    'bundler':
+      version => '1.0.21';
+    'erubis':
+      version => '2.7.0';
+    'factory_girl':
+      version => '1.3.3'; 
+    'factory_girl_rails':
+      version => '1.0.1'; 
+    'fastercsv':
+      version => '1.5.4'; 
+    'gcal4ruby':;
+    'haml':
+      version => '3.1.2'; 
+    'haml-rails':
+      version => '0.3.4'; 
+    'i18n':
+      version => '0.6.0';
+    'jquery-rails':
+      version => '1.0.13'; 
+    'jsonschema':
+      version => '2.0.1'; 
+    'kaminari':
+      version => '0.12.4'; 
+    'macaddr':
+      version => '1.0.0'; 
+    'mail':
+      version => '2.4.4';
+    'mime-types':
+      version => '1.19';
+    'mocha':
+      version => '0.9.12'; 
+    'polyglot':
+      version => '0.3.3';
+    'rack-mount':
+      version => '0.6.14';
+    'rack-test':
+      version => '0.6.1';
+    'rack':
+      version => '1.4.1';
+    'rails':
+      version => '3.0.9'; 
+    'railties':
+      version => '3.0.9';
+    'rails3-generators':
+      version => '0.17.4'; 
+    'rake':
+      version => '0.9.2.2';
+    'rdoc':
+      version => '3.8'; 
+    'rest-client':
+      version => '1.6.3'; 
+    'simple_form':
+      version => '1.4.2'; 
+    'sqlite3':
+      version => '1.3.3';
+    'thor':
+      version => '0.14.6'; 
+    'treetop':
+      version => '1.4.10';
+    'tzinfo':
+      version => '0.3.33';
+    'uuid':
+      version => '2.3.2';
+  }
   rvm_gem {
     'ruby-1.8.7-p352@notifier-dev/mysql2':
       ensure  => '0.2.18',
@@ -145,6 +152,31 @@ notifier_gem {
                   Package['libmysqlclient-dev']
                   ];
   }
+  hotline_gem {
+    'actionmailer': version => '2.3.5';
+    'actionpack': version => '2.3.5';
+    'activerecord': version => '2.3.5';
+    'activeresource': version => '2.3.5';
+    'activesupport': version => '2.3.5';
+    'builder': version => '2.1.2';
+    'bundler':
+      version => '1.0.21';
+    'fastercsv': version => '1.5.4';
+    'i18n': version => '0.5.0';
+    'json': version => '1.5.1';
+    'mocha': version => '0.9.12';
+    'mysql2': version => '< 0.3';
+    'rack': version => '1.0.1';
+    'rails': version => '2.3.5';
+    'rake': version => '0.9.2';
+    'rcov': version => '0.9.9';
+    'rubygems-update': version => '1.5.3';
+    'tzinfo': version => '0.3.29';
+  }
+    rvm_gem {
+    'ruby-1.8.7-p352@hotline-dev/mysql':
+      ensure  => 'absent';
+    }
 }
 
 class hub_node{
@@ -161,7 +193,7 @@ class hub_node{
   }
   database_grant {
     'myuser@localhost/hms_hub':
-      privileges => ['all'] ;
+      privileges => ['all'];
   }
 }
 
@@ -197,10 +229,17 @@ define notifier_gem ($gem = $title, $version = 'present') {
       require => Rvm_gemset['ruby-1.8.7-p352@notifier-dev'];
   }
 }
+define hotline_gem ($gem = $title, $version = 'present') {
+  rvm_gem {
+    "ruby-1.8.7-p352@hotline-dev/${gem}":
+      ensure  => $version,
+      require => Rvm_gemset['ruby-1.8.7-p352@hotline-dev'];
+  }
+}
 
 class installrvm {
   include rvm
-  rvm::system_user { vagrant: ; }
+  rvm::system_user { vagrant:; }
 
   if $rvm_installed == "true" {
     rvm_system_ruby {
@@ -209,4 +248,3 @@ class installrvm {
     }
   }
 }
-
