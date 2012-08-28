@@ -228,14 +228,20 @@ define appuser ($username = $title) {
     "/home/${username}/.profile":
       source  => "file:///etc/skel/.profile",
       mode    => '0644',
+      owner   => $username,
+      group   => $username,
       require => [ User[$username],File["/home/$username"] ];
     "/home/${username}/.bashrc":
       source  => "file:///etc/skel/.bashrc",
       mode    => '0644',
+      owner   => $username,
+      group   => $username,
       require => [ User[$username],File["/home/$username"] ];
     "/home/${username}/.bash_logout":
       source  => "file:///etc/skel/.bash_logout",
       mode    => '0644',
+      owner   => $username,
+      group   => $username,
       require => [ User[$username],File["/home/$username"] ];
   }
   # file { "/home/${username}/apps":
