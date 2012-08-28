@@ -34,7 +34,10 @@ class common_node{
 class notifier_node{
   appuser { ["notifier","hotline"]: }
   database {
-    ['hms_notifier','hotline']:
+    ['hms_notifier',
+     'hotline_dev',
+     'hotline_migration',
+     'hotline_test']:
       ensure   => 'present',
       require => Service[mysqld];
   }
@@ -43,7 +46,10 @@ class notifier_node{
       password_hash => mysql_password('mypass');
   }
   database_grant {
-    ['myuser@localhost/hms_notifier','myuser@localhost/hotline']:
+    ['myuser@localhost/hms_notifier',
+     'myuser@localhost/hotline_dev',
+     'myuser@localhost/hotline_migration',
+     'myuser@localhost/hotline_test']:
       privileges => ['all'];
   }
   rvm_system_ruby {
@@ -165,7 +171,7 @@ class notifier_node{
     'i18n': version => '0.5.0';
     'json': version => '1.5.1';
     'mocha': version => '0.9.12';
-    'mysql2': version => '< 0.3';
+    'mysql': version => '2.8.1';
     'rack': version => '1.0.1';
     'rails': version => '2.3.5';
     'rake': version => '0.9.2';
@@ -174,7 +180,7 @@ class notifier_node{
     'tzinfo': version => '0.3.29';
   }
     rvm_gem {
-    'ruby-1.8.7-p352@hotline-dev/mysql':
+    'ruby-1.8.7-p352@hotline-dev/mysql2':
       ensure  => 'absent';
     }
 }
