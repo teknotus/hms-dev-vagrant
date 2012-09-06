@@ -6,7 +6,7 @@ HMS, or Health Message Service is a combination of two rails apps run on differe
 1. Install git http://git-scm.com/
 2. Install Vagrant http://vagrantup.com/
 3. Run the following command
-    git clone --recursive https://github.com/teknotus/hms-dev-vagrant.git && cd hms-dev-vagrant && vagrant up
+    `git clone --recursive https://github.com/teknotus/hms-dev-vagrant.git && cd hms-dev-vagrant && vagrant up`
 4. Setup config files
 5. Setup git remotes
 
