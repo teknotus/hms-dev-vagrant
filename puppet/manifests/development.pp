@@ -21,7 +21,7 @@ class common_node{
     command => "/usr/bin/apt-get -y update"
   }
   package {
-    ["vim", "puppet","emacs23-nox", "libmysqlclient-dev"]: 
+    ["vim", "puppet","emacs23-nox", "libmysqlclient-dev","rsync"]: 
       ensure => latest, require => Exec['apt-update'];
   }
   class { 'mysql::server':
